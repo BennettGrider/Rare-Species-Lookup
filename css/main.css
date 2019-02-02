@@ -1,0 +1,83 @@
+
+/* Custom navbar colors */
+.navbar-custom {
+    background-color: #ff5500;
+}
+
+/* Changing brand and text colors */
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    color: rgba(255,255,255,0.8);
+}
+
+.navbar-custom .navbar-brand {
+    margin-right: 3rem;
+}
+
+/* Changing link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.5);
+}
+
+/* Changing active/hovered link colors */
+.navbar-custom .nav-item.active .nav-link, .navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+/* Changing navbar toggler colors. Have to define our own navbar toggler settings for navbar-custom */
+.navbar-custom .navbar-toggler {
+    background-color: rgba(255,255,255,0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+.navbar-custom .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+  }
+
+.navbar-custom .navbar-toggler:hover {
+    background-color: rgba(255,255,255,0.85)
+}
+
+
+
+/* The main div housing the county selection stuff */
+#county-select {
+    padding: 10vh 0vw;
+    /* border: 1px solid rgba(0,0,0,0.5); */ /* Just for visualizing Bootstrap grid stuff */
+}
+
+/* Option to change the relative starting position of the dropdown box. Used to make the search bar appear over the dropdown directly */
+/* .select2-dropdown--below {
+    top: 0rem;
+  } */
+
+.select2-container .select2-selection--single {
+    transform: translateY(6%); /* Don't ask me why this method works for centering the way it does */
+    /* height: 2.4rem; */ /* For changing the height of the box itself */
+}
+
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 10px;
+}
+
+
+/* Styling the rare species results containers */
+.result-cols {
+    display: none; /* Hiding the results columns until the user presses the button */
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.rare-title {
+    font-weight: 600;
+}
+
+
+

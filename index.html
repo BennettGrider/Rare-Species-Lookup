@@ -2,18 +2,111 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rare Species Lookup</title>
+    <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/leaflet.css" />
+    <!-- Select2 for dropdowns -->
+    <link href="css/select2.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+    
+
+    <title>Rare Species Lookup</title>
+    <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" /> -->
+    
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-custom"> <!-- Can use navbar-light, bg-light themes instead-->
+            <h2 class="navbar-brand">Rare Species Lookup</h2> <!-- Alternate navbar title, non-link version -->
+            <!-- <a class="navbar-brand" href="#">Rare Species Lookup</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                </ul>
+            </div>
+            </nav>
+
+
+</head>
+<body>
+    
+    <!-- Actual main content - fairly simple, just a dropdown of counties, and the results -->
+    
+    <div id="county-select" class="container">
+        <div class="row">
+            <div class="col-6">
+                <span class="align-middle"> <!-- Trying to use Bootstrap to center the Select2 dropdown -->
+                    <select name="counties" class="county-selection-dropdown" style="width: 100%; float: right"> <!-- Select2 doesn't always work well with styling as a CSS class, most consistent way to do it is inline with style tag -->
+                    <option></option>
+                    <option value="Aitkin">Aitkin</option>
+                    <option value="Anoka">Anoka</option>
+                    <option value="Becker">Becker</option>
+                    <option value="Beltrami">Beltrami</option>
+                    <option value="Benton">Benton</option>
+                    <option value="Big Stone">Big Stone</option>
+                    <option value="Blue Earth">Blue Earth</option>
+                    <option value="Brown">Brown</option> <!-- Can use selected="selected" to select this answer by default, for example -->
+                </select>
+                </span>
+            </div>
+            <div class="col">
+                <a href="#" id="get-rares-button" class="btn btn-primary">Get Rare Species</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="rare-species" class="container">
+        <div class="row">
+            <div id="county-species" class="col result-cols">
+                <!-- This is where the JS adds all rare species listed for the county -->
+            </div>
+            <div id="adjacent-county-species" class="col result-cols">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- Import order: jQuery, Popper, Bootstrap -->
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/select2.full.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/main.js"></script>
-</head>
-<body>
     
 </body>
 </html>
