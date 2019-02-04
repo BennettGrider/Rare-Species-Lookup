@@ -58,7 +58,7 @@
     <!-- Actual main content - fairly simple, just a dropdown of counties, and the results -->
     
     <div id="county-select" class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6">
                 <span class="align-middle"> <!-- Trying to use Bootstrap to center the Select2 dropdown -->
                     <select name="counties" class="county-selection-dropdown" style="width: 100%; float: right"> <!-- Select2 doesn't always work well with styling as a CSS class, most consistent way to do it is inline with style tag -->
@@ -74,11 +74,38 @@
                 </select>
                 </span>
             </div>
-            <div class="col">
-                <a href="#" id="get-rares-button" class="btn btn-primary">Get Rare Species</a>
+            <div class="col-4">
+                <a href="#rare-species" id="get-rares-button" class="btn btn-primary">Get Rare Species</a>
             </div>
         </div>
     </div>
+
+    <!-- "OR" section -->
+    <div id="or-separator" class="container">
+        <div class="row justify-content-center">
+            <img src="images/layers.png" alt=""> <!-- TEMP IMAGES! Replace with cool line later -->
+        </div>
+        <div class="row justify-content-center">
+            <h2 id="or-text">OR</h2>
+        </div>
+        <div class="row justify-content-center">
+                <img src="images/layers.png" alt=""> <!-- TEMP IMAGES! Replace with cool line later -->
+        </div>
+    </div>
+
+
+    <!-- Leaflet map -->
+    <div id="leaflet-map" class="container">
+        <div id="get-from-map-div" class="row justify-content-center">
+            <div id="get-from-map-col" class="col text-center">
+                <a href="#rare-species" id="get-from-map-button" class="btn btn-primary">Get from Location</a>
+            </div>
+        </div>
+        <div id="mapid" class="row justify-content-center">
+        </div>
+    </div>
+
+
 
     <div id="rare-species" class="container">
         <div class="row">
@@ -106,6 +133,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/leaflet.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/Leaflet.CheapLayerAt.js"></script>
+    <script src="js/geojson-utils.js"></script>
     <script src="js/main.js"></script>
     
 </body>

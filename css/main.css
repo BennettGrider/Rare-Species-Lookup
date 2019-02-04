@@ -69,6 +69,51 @@
 }
 
 
+/* Styling the "Or" divider */
+#or-separator {
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+
+/* "Get from Location" button and leaflet map */
+#leaflet-map {
+    padding: 8vh;
+}
+
+#get-from-map-div {
+    padding-bottom: 3vh;
+}
+
+#mapid {
+    height: 60vh;
+}
+
+#loc-accuracy {
+    padding-top: 1vh;
+    color: #0965d7;
+}
+
+#loc-error {
+    padding-top: 1vh;
+    color: #ff0606;
+}
+
+.county-labels {
+    background-color: #ffffff;
+    color: #ff5500;
+    opacity: 80%;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
 /* Styling the rare species results containers */
 .result-cols {
     display: none; /* Hiding the results columns until the user presses the button */
@@ -78,6 +123,10 @@
 .rare-title {
     font-weight: 600;
 }
+
+
+
+
 
 
 
