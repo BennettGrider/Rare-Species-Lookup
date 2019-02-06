@@ -19,6 +19,7 @@ var map = L.map('mapid').setView([46.7,- 94.7], 8);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
     maxZoom: 18,
+    minZoom: 6,
     id: 'osm.streets'
 }).addTo(map);
 
@@ -109,7 +110,7 @@ $.getJSON('data/mn_counties_500.geojson', function(data){
         style: {
             color: "#F5860F",
             weight: 2.5,
-            opacity: 0.6,
+            opacity: 0.7,
             fillOpacity: 0
         },
         onEachFeature: onEachFeature
@@ -148,7 +149,7 @@ var all_counties = {
     'Clearwater': ["Rhynchospora capillacea", "Cypripedium arietinum", "Gymnocarpium robertianum", "Carex sterilis", "Ruppia cirrhosa", "Eleocharis rostellata", "Cardamine pratensis", "Botrychium mormo", "Najas gracillima", "Potamogeton pulcher", "Torreyochloa pallida", "Malaxis monophyllos var. brachypoda", "Cladium mariscoides", "Botrychium minganense", "Malaxis paludosa", "Trichophorum clintonii", "Botrychium simplex", "Salix maccalliana", "Eleocharis flavescens var. olivacea", "Carex formosa", "Eleocharis quinqueflora", "Poa wolfii", "Drosera anglica", "Najas guadalupensis ssp. olivacea", "Platanthera clavellata"],
     'Cook': ["Cypripedium arietinum", "Deschampsia flexuosa", "Nymphaea leibergii", "Calamagrostis purpurascens", "Woodsia scopulina ssp. laurentiana", "Subularia aquatica ssp. americana", "Rubus semisetosus", "Carex rossii", "Tofieldia pusilla", "Osmorhiza depauperata", "Carex pallescens", "Empetrum nigrum", "Selaginella selaginoides", "Sagina nodosa ssp. borealis", "Arnica lonchophylla", "Utricularia resupinata", "Botrychium rugulosum", "Muhlenbergia uniflora", "Pinguicula vulgaris", "Luzula parviflora", "Draba norvegica", "Xyris montana", "Boechera retrofracta", "Pyrola minor", "Carex media", "Asplenium trichomanes ssp. trichomanes", "Carex praticola", "Vaccinium uliginosum", "Bistorta vivipara", "Cardamine pratensis", "Botrychium lunaria", "Listera convallarioides", "Botrychium mormo", "Juncus subtilis", "Moehringia macrophylla", "Juniperus horizontalis", "Najas gracillima", "Waldsteinia fragarioides var. fragarioides", "Torreyochloa pallida", "Euphrasia hudsoniana var. ramosior", "Calamagrostis lacustris", "Carex novae-angliae", "Woodsia oregana ssp. cathcartiana", "Botrychium lanceolatum ssp. angustisegmentum", "Cladium mariscoides", "Botrychium minganense", "Utricularia geminiscapa", "Draba arabisans", "Shepherdia canadensis", "Botrychium acuminatum", "Allium schoenoprasum", "Saxifraga cernua", "Botrychium spathulatum", "Trisetum spicatum", "Eleocharis nitida", "Cirsium pumilum var. hillii", "Carex xerantica", "Rubus chamaemorus", "Trichophorum clintonii", "Listera auriculata", "Adlumia fungosa", "Osmorhiza berteroi", "Salix pellita", "Piptatherum canadense", "Botrychium simplex", "Eleocharis robbinsii", "Juncus stygius var. americanus", "Crataegus douglasii", "Huperzia appalachiana", "Oxytropis viscida", "Littorella americana", "Phacelia franklinii", "Prosartes trachycarpa", "Draba cana", "Eleocharis quinqueflora", "Saxifraga paniculata", "Castilleja septentrionalis", "Woodsia glabella", "Carex michauxiana", "Huperzia porophila", "Empetrum atropurpureum", "Platanthera clavellata", "Carex ormostachya", "Packera indecora", "Erigeron acris var. kamtschaticus", "Botrychium pallidum", "Woodsia alpina", "Polystichum braunii", "Bidens discoidea", "Ranunculus lapponicus", "Carex supina ssp. spaniocarpa", "Carex flava"],
     'Cottonwood': ["Rhynchospora capillacea", "Cypripedium candidum", "Buchloe dactyloides", "Eleocharis wolfii", "Asclepias sullivantii", "Bacopa rotundifolia", "Besseya bullii", "Orobanche ludoviciana var. ludoviciana", "Woodsia oregana ssp. cathcartiana", "Lespedeza leptostachya", "Agalinis auriculata", "Cyperus acuminatus", "Aristida purpurea var. longiseta", "Limosella aquatica", "Astragalus missouriensis var. missouriensis", "Schedonnardus paniculatus", "Plagiobothrys scouleri var. penicillatus", "Sagittaria calycina var. calycina"],
-    'Crow': ["Rubus vermontanus", "Poa paludigena", "Asclepias sullivantii", "Rubus semisetosus", "Botrychium rugulosum", "Botrychium ascendens", "Juglans cinerea", "Hudsonia tomentosa", "Potamogeton bicupulatus", "Botrychium mormo", "Najas gracillima", "Utricularia purpurea", "Elatine triandra", "Malaxis monophyllos var. brachypoda", "Botrychium lanceolatum ssp. angustisegmentum", "Cladium mariscoides", "Botrychium minganense", "Botrychium spathulatum", "Botrychium lineare", "Botrychium campestre", "Rubus fulleri", "Botrychium simplex", "Eleocharis robbinsii", "Platanthera flava var. herbiola", "Botrychium oneidense", "Panax quinquefolius", "Littorella americana", "Eleocharis quinqueflora", "Najas guadalupensis ssp. olivacea", "Platanthera clavellata", "Botrychium pallidum", "Bidens discoidea", "Decodon verticillatus var. laevigatus", "Alisma gramineum", "Ranunculus lapponicus"],
+    'Crow Wing': ["Rubus vermontanus", "Poa paludigena", "Asclepias sullivantii", "Rubus semisetosus", "Botrychium rugulosum", "Botrychium ascendens", "Juglans cinerea", "Hudsonia tomentosa", "Potamogeton bicupulatus", "Botrychium mormo", "Najas gracillima", "Utricularia purpurea", "Elatine triandra", "Malaxis monophyllos var. brachypoda", "Botrychium lanceolatum ssp. angustisegmentum", "Cladium mariscoides", "Botrychium minganense", "Botrychium spathulatum", "Botrychium lineare", "Botrychium campestre", "Rubus fulleri", "Botrychium simplex", "Eleocharis robbinsii", "Platanthera flava var. herbiola", "Botrychium oneidense", "Panax quinquefolius", "Littorella americana", "Eleocharis quinqueflora", "Najas guadalupensis ssp. olivacea", "Platanthera clavellata", "Botrychium pallidum", "Bidens discoidea", "Decodon verticillatus var. laevigatus", "Alisma gramineum", "Ranunculus lapponicus"],
     'Dakota': ["Rhynchospora capillacea", "Cypripedium candidum", "Oenothera rhombipetala", "Asclepias sullivantii", "Desmodium cuspidatum var. longifolium", "Baptisia bracteata var. glabrescens", "Carex sterilis", "Antennaria parvifolia", "Scleria verticillata", "Platanthera praeclara", "Juglans cinerea", "Rorippa sessiliflora", "Crocanthemum canadense", "Aristida tuberculosa", "Hudsonia tomentosa", "Bacopa rotundifolia", "Trillium nivale", "Besseya bullii", "Scutellaria ovata var. versicolor", "Silene nivea", "Juniperus horizontalis", "Asclepias amplexicaulis", "Valeriana edulis var. ciliata", "Orobanche uniflora", "Cladium mariscoides", "Asplenium platyneuron", "Orobanche fasciculata", "Lespedeza leptostachya", "Agalinis auriculata", "Berula erecta", "Cirsium pumilum var. hillii", "Minuartia dawsonensis", "Gymnocladus dioica", "Crotalaria sagittalis", "Phlox maculata", "Platanthera flava var. herbiola", "Scleria triglomerata", "Carex grayi", "Lechea tenuifolia var. tenuifolia", "Nuttallanthus canadensis", "Carex conjuncta", "Botrychium oneidense", "Arnoglossum plantagineum", "Panax quinquefolius", "Arisaema dracontium", "Rubus multifer", "Polanisia jamesii", "Eryngium yuccifolium", "Sagittaria calycina var. calycina", "Taenidia integerrima", "Decodon verticillatus var. laevigatus"],
     'Dodge': ["Cypripedium candidum", "Asclepias sullivantii", "Baptisia bracteata var. glabrescens", "Carex sterilis", "Platanthera praeclara", "Juglans cinerea", "Boechera laevigata", "Valeriana edulis var. ciliata", "Lespedeza leptostachya", "Napaea dioica", "Baptisia lactea var. lactea", "Phlox maculata", "Platanthera flava var. herbiola", "Carex conjuncta", "Arnoglossum plantagineum", "Panax quinquefolius", "Parthenium integrifolium", "Arisaema dracontium", "Eryngium yuccifolium", "Carex annectens", "Hydrastis canadensis"],
     'Douglas': ["Cypripedium candidum", "Ruppia cirrhosa", "Platanthera praeclara", "Trillium nivale", "Malaxis monophyllos var. brachypoda", "Botrychium campestre", "Cirsium pumilum var. hillii", "Aristida purpurea var. longiseta", "Najas marina", "Panax quinquefolius", "Najas guadalupensis ssp. olivacea", "Alisma gramineum"],
@@ -193,7 +194,7 @@ var all_counties = {
     'Polk': ["Rhynchospora capillacea", "Cypripedium candidum", "Cypripedium arietinum", "Avenula hookeri", "Carex sterilis", "Ruppia cirrhosa", "Eleocharis rostellata", "Calamagrostis montanensis", "Antennaria parvifolia", "Scleria verticillata", "Carex obtusata", "Botrychium rugulosum", "Platanthera praeclara", "Gentiana affinis", "Hudsonia tomentosa", "Erigeron lonchophyllus", "Botrychium mormo", "Orobanche ludoviciana var. ludoviciana", "Juniperus horizontalis", "Achnatherum hymenoides", "Malaxis monophyllos var. brachypoda", "Cladium mariscoides", "Carex scirpoidea", "Carex hallii", "Gaillardia aristata", "Orobanche fasciculata", "Botrychium campestre", "Packera cana", "Aristida purpurea var. longiseta", "Salix maccalliana", "Carex formosa", "Najas marina", "Eleocharis quinqueflora", "Botrychium pallidum", "Shinnersoseris rostrata", "Silene drummondii ssp. drummondii", "Gentianella amarella"],
     'Pope': ["Rhynchospora capillacea", "Cypripedium candidum", "Carex sterilis", "Ruppia cirrhosa", "Scleria verticillata", "Juniperus horizontalis", "Botrychium campestre", "Berula erecta", "Cirsium pumilum var. hillii", "Botrychium simplex", "Najas marina", "Panax quinquefolius", "Eleocharis quinqueflora", "Eleocharis coloradoensis", "Dalea candida var. oligophylla"],
     'Ramsey': ["Cypripedium candidum", "Rubus semisetosus", "Juncus articulatus", "Juglans cinerea", "Crocanthemum canadense", "Aristida tuberculosa", "Hudsonia tomentosa", "Gaylussacia baccata", "Besseya bullii", "Rotala ramosior", "Najas gracillima", "Quercus bicolor", "Orobanche uniflora", "Agalinis gattingeri", "Fimbristylis autumnalis", "Baptisia lactea var. lactea", "Cirsium pumilum var. hillii", "Bartonia virginica", "Trichophorum clintonii", "Gymnocladus dioica", "Crotalaria sagittalis", "Carex formosa", "Platanthera flava var. herbiola", "Scleria triglomerata", "Polygala cruciata", "Eleocharis quinqueflora", "Rubus multifer", "Aureolaria pedicularia", "Viola lanceolata var. lanceolata", "Najas guadalupensis ssp. olivacea", "Platanthera clavellata", "Potamogeton diversifolius", "Taenidia integerrima", "Decodon verticillatus var. laevigatus"],
-    'Red': ["Rhynchospora capillacea", "Cypripedium candidum", "Avenula hookeri", "Carex sterilis", "Platanthera praeclara", "Gentiana affinis", "Carex scirpoidea", "Carex hallii", "Gaillardia aristata", "Trichophorum clintonii", "Salix maccalliana"],
+    'Red Lake': ["Rhynchospora capillacea", "Cypripedium candidum", "Avenula hookeri", "Carex sterilis", "Platanthera praeclara", "Gentiana affinis", "Carex scirpoidea", "Carex hallii", "Gaillardia aristata", "Trichophorum clintonii", "Salix maccalliana"],
     'Redwood': ["Rhynchospora capillacea", "Cypripedium candidum", "Eleocharis wolfii", "Asclepias sullivantii", "Scleria verticillata", "Bacopa rotundifolia", "Elatine triandra", "Woodsia oregana ssp. cathcartiana", "Cladium mariscoides", "Lespedeza leptostachya", "Gymnocladus dioica", "Fimbristylis puberula var. interior", "Opuntia macrorhiza", "Eleocharis quinqueflora", "Schedonnardus paniculatus", "Psoralidium tenuiflorum", "Astragalus flexuosus var. flexuosus"],
     'Renville': ["Cypripedium candidum", "Buchloe dactyloides", "Eleocharis wolfii", "Asclepias sullivantii", "Bacopa rotundifolia", "Besseya bullii", "Woodsia oregana ssp. cathcartiana", "Lespedeza leptostachya", "Agalinis auriculata", "Gymnocladus dioica", "Aristida purpurea var. longiseta", "Opuntia macrorhiza", "Panax quinquefolius", "Astragalus missouriensis var. missouriensis", "Psoralidium tenuiflorum"],
     'Rice': ["Cypripedium candidum", "Dicentra canadensis", "Asclepias sullivantii", "Desmodium cuspidatum var. longifolium", "Baptisia bracteata var. glabrescens", "Carex sterilis", "Juglans cinerea", "Crocanthemum canadense", "Phemeranthus rugospermus", "Crataegus calpodendron", "Besseya bullii", "Scutellaria ovata var. versicolor", "Najas gracillima", "Valeriana edulis var. ciliata", "Orobanche uniflora", "Agalinis gattingeri", "Lespedeza leptostachya", "Berula erecta", "Cirsium pumilum var. hillii", "Gymnocladus dioica", "Carex grayi", "Lechea tenuifolia var. tenuifolia", "Carex conjuncta", "Panax quinquefolius", "Arisaema dracontium", "Eryngium yuccifolium", "Rubus stipulatus", "Hydrastis canadensis", "Taenidia integerrima", "Erythronium propullans", "Carex davisii"],
@@ -219,7 +220,6 @@ var all_counties = {
     'Wright': ["Cypripedium arietinum", "Ruppia cirrhosa", "Juglans cinerea", "Aristida tuberculosa", "Najas gracillima", "Cirsium pumilum var. hillii", "Panax quinquefolius", "Najas guadalupensis ssp. olivacea", "Bidens discoidea"],
     'Yellow Medicine': ["Rhynchospora capillacea", "Cypripedium candidum", "Asclepias sullivantii", "Bacopa rotundifolia", "Xanthisma spinulosum var. spinulosum", "Woodsia oregana ssp. cathcartiana", "Carex hallii", "Orobanche fasciculata", "Botrychium campestre", "Berula erecta", "Cyperus acuminatus", "Gymnocladus dioica", "Viola nuttallii", "Opuntia macrorhiza", "Panax quinquefolius", "Astragalus missouriensis var. missouriensis", "Dalea candida var. oligophylla", "Carex annectens", "Astragalus flexuosus var. flexuosus"]
 };
-
 
 // Lookup for getting common names as well
 var sci_name_lookup = {
@@ -535,58 +535,170 @@ var sci_name_lookup = {
     "Montia chamissoi": "Montia"
 };
 
+// Lookup for getting each adjacent county
+var adjacent_counties = {
+    'Lake of the Woods': ['Roseau', 'Beltrami', 'Koochiching'],
+    'Kittson': ['Roseau', 'Marshall'],
+    'Roseau': ['Kittson', 'Lake of the Woods', 'Marshall', ''],
+    'Koochiching': ['Beltrami', 'St. Louis', 'Itasca', 'St. Louis'],
+    'Marshall': ['Kittson', 'Roseau', 'Beltrami', 'Pennington'],
+    'St. Louis': ['Itasca', 'Lake', 'Aitkin', 'Carlton'],
+    'Beltrami': ['Roseau', 'Lake of the Woods', 'Koochiching', 'Pennington', 'Mahnomen', 'Hubbard', 'Cass'],
+    'Polk': ['Marshall', 'Beltrami', 'Norman', 'Clearwater'],
+    'Pennington': ['Marshall', 'Beltrami', 'Polk', 'Red Lake', 'Clearwater'],
+    'Cook': ['Lake'],
+    'Lake': ['Cook', 'St. Louis'],
+    'Clearwater': ['Pennington', 'Beltrami', 'Polk', 'Becker', 'Hubbard'],
+    'Red Lake': ['Pennington', 'Polk', ''],
+    'Itasca': ['Beltrami', 'Koochiching', 'St. Louis', 'Cass', 'Aitkin'],
+    'Norman': ['Polk', 'Mahnomen', 'Clay', 'Becker'],
+    'Mahnomen': ['Polk', 'Clearwater', 'Norman', 'Becker', ''],
+    'Cass': ['Beltrami', 'Itasca', 'Itasca', 'Hubbard', 'Aitkin', 'Todd', 'Crow Wing'],
+    'Hubbard': ['Clearwater', 'Beltrami', 'Becker', 'Cass', 'Wadena'],
+    'Clay': ['Norman', 'Becker', 'Wilkin', 'Otter Tail'],
+    'Becker': ['Norman', 'Mahnomen', 'Hubbard', 'Clay', 'Otter Tail', 'Wadena'],
+    'Aitkin': ['Cass', 'Itasca', 'St. Louis', 'Crow Wing', 'Carlton', 'Morrison', 'Kanabec', 'Pine'],
+    'Wadena': ['Becker', 'Hubbard', 'Otter Tail', 'Cass', 'Todd'],
+    'Crow Wing': ['Cass', 'Aitkin', 'Morrison', 'Mille Lacs'],
+    'Carlton': ['St. Louis', 'Aitkin', 'Pine'],
+    'Otter Tail': ['Clay', 'Becker', 'Wadena', 'Wilkin', 'Douglas', 'Todd'],
+    'Wilkin': ['Clay', 'Otter Tail', 'Traverse', 'Grant'],
+    'Pine': ['Aitkin', 'Carlton', 'Kanabec', 'Isanti'],
+    'Todd': ['Otter Tail', 'Wadena', 'Cass', 'Douglas', 'Morrison', 'Stearns'],
+    'Morrison': ['Todd', 'Crow Wing', 'Aitkin', 'Todd', 'Mille Lacs', 'Stearns', 'Benton'],
+    'Mille Lacs': ['Crow Wing', 'Aitkin', 'Morrison', 'Kanabec', 'Sherburne', 'Isanti'],
+    'Kanabec': ['Mille Lacs', 'Aitkin', 'Pine', 'Isanti', 'Chisago'],
+    'Grant': ['Wilkin', 'Otter Tail', 'Traverse', 'Douglas', 'Stevens', 'Pope'],
+    'Douglas': ['Otter Tail', 'Todd', 'Grant', 'Stevens', 'Pope', 'Stearns'],
+    'Traverse': ['Wilkin', 'Grant', 'Big Stone', 'Stevens'],
+    'Benton': ['Morrison', 'Mille Lacs', 'Stearns', 'Sherburne'],
+    'Stevens': ['Traverse', 'Grant', 'Douglas', 'Big Stone', 'Pope', 'Swift'],
+    'Stearns': ['Douglas', 'Morrison', 'Benton', 'Pope', 'Sherburne', 'Kandiyohi', 'Meeker', 'Wright'],
+    'Pope': ['Grant', 'Douglas', 'Todd', 'Stevens', 'Stearns', 'Swift', 'Kandiyohi'],
+    'Isanti': ['Mille Lacs', 'Kanabec', 'Pine', 'Chisago', 'Sherburne', 'Anoka'],
+    'Chisago': ['Kanabec', 'Pine', 'Isanti', 'Anoka', 'Washington'],
+    'Big Stone': ['Traverse', 'Stevens', 'Swift'],
+    'Sherburne': ['Benton', 'Isanti', 'Stearns', 'Anoka', 'Wright', ''],
+    'Swift': ['Stevens', 'Pope', 'Big Stone', 'Kandiyohi', 'Lac qui Parle', 'Chippewa'],
+    'Kandiyohi': ['Pope', 'Stearns', 'Chippewa', 'Meeker', 'Renville', ''],
+    'Wright': ['Stearns', 'Sherburne', 'Meeker', 'Hennepin', 'McLeod', 'Carver', 'Hennepin'],
+    'Anoka': ['Sherburne', 'Isanti', 'Chisago', 'Hennepin', 'Washington', 'Ramsey'],
+    'Meeker': ['Kandiyohi', 'Stearns', 'Wright', 'Renville', 'McLeod'],
+    'Lac qui Parle': ['Swift', 'Chippewa', 'Yellow Medicine'],
+    'Washington': ['Anoka', 'Chisago', 'Ramsey', 'Dakota'],
+    'Hennepin': ['Wright', 'Anoka', 'Ramsey', 'Carver', 'Scott', 'Dakota'],
+    'Chippewa': ['Swift', 'Kandiyohi', 'Lac qui Parle', 'Yellow Medicine', 'Renville'],
+    'Ramsey': ['Anoka', 'Washington', 'Hennepin', 'Dakota'],
+    'McLeod': ['Meeker', 'Wright', 'Renville', 'Carver', 'Sibley', ''],
+    'Carver': ['Wright', 'McLeod', 'Hennepin', 'Sibley', 'Scott'],
+    'Yellow Medicine': ['Lac qui Parle', 'Chippewa', 'Renville', 'Lincoln', 'Lyon', 'Redwood'],
+    'Dakota': ['Hennepin', 'Ramsey', 'Scott', 'Rice', 'Goodhue'],
+    'Renville': ['Chippewa', 'Kandiyohi', 'Yellow Medicine', 'McLeod', 'Redwood', 'Nicollet'],
+    'Scott': ['Carver', 'Hennepin', 'Sibley', 'Dakota', 'Le Sueur'],
+    'Sibley': ['Renville', 'McLeod', 'Carver', 'Scott', 'Nicollet', 'Le Sueur'],
+    'Redwood': ['Yellow Medicine', 'Renville', 'Lyon', 'Brown', 'Murray', 'Cottonwood'],
+    'Goodhue': ['Dakota', 'Rice', 'Dodge', 'Olmsted', 'Wabasha'],
+    'Lincoln': ['Yellow Medicine', 'Lyon', 'Pipestone', 'Murray'],
+    'Lyon': ['Yellow Medicine', 'Lincoln', 'Redwood', 'Pipestone', 'Murray'],
+    'Le Sueur': ['Sibley', 'Scott', 'Nicollet', 'Rice', 'Blue Earth', 'Waseca'],
+    'Rice': ['Scott', 'Dakota', 'Le Sueur', 'Goodhue', 'Waseca', 'Steele', 'Dodge'],
+    'Brown': ['Renville', 'Sibley', 'Redwood', 'Nicollet', 'Cottonwood', 'Watonwan', 'Blue Earth'],
+    'Nicollet': ['Sibley', 'Le Sueur', 'Brown', 'Blue Earth'],
+    'Wabasha': ['Goodhue', 'Olmsted', 'Winona'],
+    'Blue Earth': ['Nicollet', 'Le Sueur', 'Watonwan', 'Waseca', 'Martin', 'Faribault'],
+    'Pipestone': ['Lincoln', 'Lyon', 'Murray', 'Rock', 'Nobles'],
+    'Murray': ['Lincoln', 'Lyon', 'Redwood', 'Pipestone', 'Cottonwood', 'Rock', 'Nobles', 'Jackson'],
+    'Cottonwood': ['Redwood', 'Brown', 'Murray', 'Watonwan', 'Nobles', 'Jackson', 'Martin'],
+    'Winona': ['Wabasha', 'Olmsted', 'Fillmore', 'Houston'],
+    'Waseca': ['Le Sueur', 'Rice', 'Blue Earth', 'Steele', 'Faribault', 'Freeborn'],
+    'Steele': ['Rice', 'Waseca', 'Dodge', 'Freeborn', 'Mower'],
+    'Dodge': ['Rice', 'Goodhue', 'Steele', 'Olmsted', 'Mower', ''],
+    'Olmsted': ['Goodhue', 'Wabasha', 'Dodge', 'Winona', 'Mower', 'Fillmore'],
+    'Watonwan': ['Brown', 'Blue Earth', 'Cottonwood', 'Jackson', 'Martin'],
+    'Rock': ['Pipestone', 'Murray', 'Nobles'],
+    'Nobles': ['Pipestone', 'Murray', 'Cottonwood', 'Rock', 'Jackson'],
+    'Jackson': ['Murray', 'Cottonwood', 'Watonwan', 'Nobles'],
+    'Martin': ['Cottonwood', 'Watonwan', 'Blue Earth', 'Jackson', 'Faribault'],
+    'Houston': ['Winona', 'Fillmore'],
+    'Faribault': ['Blue Earth', 'Waseca', 'Martin', 'Freeborn'],
+    'Fillmore': ['Olmsted', 'Winona', 'Mower', 'Houston'],
+    'Freeborn': ['Waseca', 'Steele', 'Faribault', 'Mower'],
+    'Mower': ['Steele', 'Dodge', 'Olmsted', 'Freeborn', 'Fillmore']
+};
 
-// On clicking the 'Get Rare Species' button, adds the list of scientific/common species names to the county species div
-$('#get-rares-button').on('click', function (e) {
+var selected_col_id = '#county-species';
+var adjacent_col_id = '#adjacent-county-species';
 
-    // If elements have already been generated, removes them all
-    if ($('.rare-title').length) {
-        $('.rare-title').remove();
-        $('#rare-list').empty(); // Use .empty() to also remove all child <li> elements
-    };
 
-    // First, unhiding the result columns on button click
-    $('.result-cols').show();
 
-    var selectedCounty = $('.county-selection-dropdown').val();
-    var sp_list_title = $('<h5 class="rare-title"></h5>').text(selectedCounty + ' County rare species:');
+// Function used for adding the species lists to the rare species container columns
+function appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup) {
+    // Made the title for each county into a button, so that each one can be collapsed
+    var uniqueDivId = selectedCounty.split(' ').join('-').split('.').join('').toLowerCase() + '-species-list';
+    var sp_list_title = $('<button class="btn btn-link county-button" data-toggle="collapse" data-target="#' + uniqueDivId + '" aria-expanded="false" aria-controls="' + uniqueDivId + '">' + selectedCounty + ' County rare species:</button>');
+    $(selected_col_id).append(sp_list_title);
+    $(selected_col_id).append('<div id="' + uniqueDivId + '" class="collapse show county-species-div" data-parent="' + selected_col_id + '"></div>'); // Housing the collapsable species info for each county
+    $('.county-species-div').collapse(); // Making the county <div> groups start collapsed
 
-    $('#county-species').prepend(sp_list_title); // Adding the title
-    $('#county-species').append('<ul id="rare-list"></ul>'); // Adding the <ul> element the rare species list will be housed in
-
-    // Adding each species in its own list element
     var county_species = all_counties[selectedCounty];
+    county_species.sort();
     for (var i = 0; i < county_species.length; i++) {
         var sp_to_append = county_species[i];
         var sp_common_name = sci_name_lookup[sp_to_append];
-        $('#rare-list').append('<li>' + sp_to_append + ' (' + sp_common_name + ')' + '</li>');
+        var species_image = 'images/species/' + sp_to_append + '.jpg';
+        var species_image_popup = '<a tabindex="0" class="species-popup" data-toggle="popover" data-trigger="focus" title="' + sp_to_append + '" data-content="<img src=\'' + species_image + '\' class=\'species-image\' width=\'200\' />">' + sp_to_append + '</a>';
+        $('.species-popup').popover({
+            html: true
+        });
+        $('#' + uniqueDivId).append('<p class="species-entry"><em>' + species_image_popup + '</em> (' + sp_common_name + ')' + '</p>');
+        // $('#county-species').append('<p class="species-entry"><em>' + sp_to_append + '</em> (' + sp_common_name + ')' + '</p>');
     };
+};
+
+
+// Adding rare species data for the adjacent counties
+function appendAdjacentCountyData(adjacent_col_id, selectedCounty, all_counties, sci_name_lookup, adjacent_counties) {
+    var adj_counties_array = adjacent_counties[selectedCounty];
+
+    // For each adjacent county, adds the data to the col with div id=adjacent_col_id (#adjacent-county-species)
+    for (cty in adj_counties_array) {
+        appendRareData(adjacent_col_id, adj_counties_array[cty], all_counties, sci_name_lookup);
+    }
+}
+
+
+
+// On clicking the 'Get Rare Species' button, adds the list of scientific/common species names to the county species div
+$('#get-rares-button').on('click', function (e) {
+    // First, unhiding the result columns on button click
+    $('.result-cols').show();
+    var selectedCounty = $('.county-selection-dropdown').val();
+
+    // If elements have already been generated, removes them all
+    if ($('.county-button').length) {
+        $('.county-button').remove();
+        $('.county-species-div').empty(); // Use .empty() to also remove all child <li> elements
+    };
+    
+    // Adding rare species data for the county in question
+    appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup);
+
+    // Adding rare species data for adjacent counties
+    appendAdjacentCountyData(adjacent_col_id, selectedCounty, all_counties, sci_name_lookup, adjacent_counties);
+
 
 });
 
-
 // On clicking 'Get from Location' button, does the same thing. Separate function because it handles getting data slightly differently
 $('#get-from-map-button').on('click', function (e) {
-    if ($('.rare-title').length) {
-        $('.rare-title').remove();
-        $('#rare-list').empty(); // Use .empty() to also remove all child <li> elements
-    };
 
     $('.result-cols').show();
     var selectedCounty = '';
 
-    // appendRareData function is used to ensure that none of this executes until the geolocation getCurrentPosition callback
-    function appendRareData(selectedCounty, all_counties, sci_name_lookup) {
-        var sp_list_title = $('<h5 class="rare-title"></h5>').text(selectedCounty + ' County rare species:');
-        $('#county-species').prepend(sp_list_title);
-        $('#county-species').append('<ul id="rare-list"></ul>');
-
-        var county_species = all_counties[selectedCounty];
-        for (var i = 0; i < county_species.length; i++) {
-            var sp_to_append = county_species[i];
-            var sp_common_name = sci_name_lookup[sp_to_append];
-            $('#rare-list').append('<li>' + sp_to_append + ' (' + sp_common_name + ')' + '</li>');
-        };
+    // If elements have already been generated, removes them all
+    if ($('.county-button').length) {
+        $('.county-button').remove();
+        $('.county-species-div').empty(); // Use .empty() to also remove all child <li> elements
     };
     
     // Checking to see if geolocation is available. If so, pressing the 'Get from Location' button grabs the county the user is located in using leaflet-pip
@@ -597,12 +709,15 @@ $('#get-from-map-button').on('click', function (e) {
         selectedCounty = countyGeoloc;
 
         // console.log('Found position');
-        appendRareData(selectedCounty, all_counties, sci_name_lookup);
+        // appendRareData function is used to ensure that none of this executes until the geolocation getCurrentPosition callback
+        appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup);
+        appendAdjacentCountyData(adjacent_col_id, selectedCounty, all_counties, sci_name_lookup, adjacent_counties);
     }
     function geo_error() {
         selectedCounty = clickedCounty;
         // console.log('Cant find position');
-        appendRareData(selectedCounty, all_counties, sci_name_lookup);
+        appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup);
+        appendAdjacentCountyData(adjacent_col_id, selectedCounty, all_counties, sci_name_lookup, adjacent_counties);
     }
     
     // Kind of janky workaround. If the marker object has been properly defined as L.marker (i.e. location is available, calls the geo_found function)

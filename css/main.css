@@ -49,7 +49,7 @@
 
 /* The main div housing the county selection stuff */
 #county-select {
-    padding: 10vh 0vw;
+    padding: 5vh 0vw;
     /* border: 1px solid rgba(0,0,0,0.5); */ /* Just for visualizing Bootstrap grid stuff */
 }
 
@@ -74,14 +74,19 @@
     /* border: 1px solid rgba(0,0,0,0.2); */
 }
 
+.separator-image {
+    max-height: 12px;
+    max-width: 100px;
+}
+
 
 /* "Get from Location" button and leaflet map */
 #leaflet-map {
-    padding: 8vh;
+    padding: 3vh;
 }
 
 #get-from-map-div {
-    padding-bottom: 3vh;
+    padding-bottom: 1vh;
 }
 
 #mapid {
@@ -122,8 +127,75 @@
 
 .rare-title {
     font-weight: 600;
+    font-size: 1em;
 }
 
+.species-entry {
+    font-size: 0.8em;
+}
+
+/* Styling for each species image loaded in the popups */
+.popover {
+    max-width: 50wv;
+    /* width: 20vw; */
+}
+
+.species-image {
+    max-width: 500px;
+}
+
+
+.county-button {
+    text-decoration: none;
+    color: #ff5500;
+    font-weight: 500;
+}
+
+.county-button:hover {
+    text-decoration: none;
+    color: #c12600;
+    font-weight: 600;
+}
+
+.species-entry {
+    font-size: 0.8em;
+}
+
+.species-popup {
+    color: #1f80f5;
+    text-decoration: none;
+}
+
+.species-popup:hover {
+    color: #0a4286;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+
+/* Changes when bigger than a small device */
+@media (min-width: 576px) {
+    .rare-title {
+        font-size: 1.1em;
+    }
+    .species-entry {
+        font-size: 0.9em;
+    }
+}
+
+/* Medium devices. Again, don't have to change much because of bootstrap */
+@media (min-width: 768px) {
+    .rare-title {
+        font-size: 1.3em;
+    }
+    .species-entry {
+        font-size: 1em;
+    }
+    .separator-image {
+        max-height: 20px;
+        max-width: 160px;
+    }
+}
 
 
 
