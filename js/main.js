@@ -1,7 +1,7 @@
 
 
 
-// Select2 as a jQuery function, vall on any jQuery selector when initializing Select2
+// Select2 as a jQuery function, call on any jQuery selector when initializing Select2
 $(document).ready(function() {
     $('.county-selection-dropdown').select2({
         placeholder: "Select a county",
@@ -10,7 +10,9 @@ $(document).ready(function() {
 });
 
 
+// *****************
 // LEAFLET MAP STUFF
+// *****************
 
 // Initializing leaflet map
 var map = L.map('mapid').setView([46.7,- 94.7], 8);
@@ -20,30 +22,59 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     id: 'osm.streets'
 }).addTo(map);
 
+
+// Setting up custom location marker
+var locIcon = L.icon({
+    iconUrl: 'images/location-icon-v2.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30] // Anchor is based on [0, 0] being the top left corner
+});
+
 // Getting user location
 var userLat = 0;
 var userLng = 0;
-var latlngPoint = {lat: 0, lng: 0};
-// var locMarker = L.marker([0, 0]);
-map.locate({setView: true, maxZoom: 12, enableHighAccuracy: true});
+var locMarker; // locMarker and locCircle must be declared here to be present outside of a single onLocationFound function call
+var locCircle;
+var markerPresent = false; // For tracking if a marker and accuracy circle have been created yet
+var locErrorMsg = false; // For tracking if a location error message has already been generated
+
 function onLocationFound(e) {
+
     userLat = e.latlng.lat;
     userLng = e.latlng.lng;
-    latlngPoint = e.latlng;
     var radius = e.accuracy / 2;
-    L.circle(e.latlng, radius).addTo(map);
-    L.marker(e.latlng).addTo(map);
-    $('#get-from-map-col').append('<p id="loc-accuracy">Location accuracy: ' + e.accuracy + 'm</p>');
+
+    // First, if the 'location cannot be found' message exists, removes it
+    if (locErrorMsg == true) {
+        $('#loc-error').remove();
+    }
+
+    // If the location marker doesn't exist, creates one, otherwise updates the marker position
+    if (markerPresent == false) {
+        locMarker = L.marker(e.latlng, {icon: locIcon}).addTo(map);
+        locCircle = L.circle(e.latlng, radius).addTo(map);
+        map.setView(e.latlng, 12); // Centers the map on the location, but only initially
+        markerPresent = true;
+        $('#get-from-map-col').append('<p id="loc-accuracy">Location accuracy: ' + e.accuracy + 'm</p>');
+    } else {
+        locMarker.setLatLng(e.latlng);
+        locCircle.setLatLng(e.latlng);
+        $('#loc-accuracy').html('Location accuracy: ' + e.accuracy + 'm');
+    }
 }
 map.on('locationfound', onLocationFound);
+map.locate({setView: false, maxZoom: 16, enableHighAccuracy: true, watch: true});
 
 // If geolocation fails
 map.on('locationerror', function onLocationError(e){
-    $('#get-from-map-col').append('<p id="loc-error">Location cannot be found. Select a county on the map or dropdown to generate results.</p>');
+    if (locErrorMsg == false) {
+        $('#get-from-map-col').append('<p id="loc-error">Location cannot be found. Select a county on the map or dropdown to generate results.</p>');
+        locErrorMsg = true;
+    }
 });
 
 
-// When the GeoJSON is loaded, determines what happens when a layer is clicked
+// When the GeoJSON is loaded, onEachFeature determines what happens when a layer is clicked
 var clickedCounty = '';
 function onEachFeature(feature, layer) {
     layer.bindPopup(feature.properties.CTY_NAME + ' County');
@@ -70,7 +101,7 @@ function onEachFeature(feature, layer) {
     });
 }
 
-// Testing out adding geojson normally, without AJAX
+// Adding the counties geojson normally, without AJAX
 // This is done so that leaflet-pip can correctly interpret the object, and thus run pointInLayer properly
 var countiesLayer;
 $.getJSON('data/mn_counties_500.geojson', function(data){
@@ -87,7 +118,7 @@ $.getJSON('data/mn_counties_500.geojson', function(data){
 });
 
 
-// For adding the counties GeoJSON data to the map as polygons. Possibly useful, but not currently needed
+// For adding the counties GeoJSON data to the map as polygons. Possibly useful later, but not currently needed
 // countiesLayer.forEach(function(county) {
 //     var polygon = L.polygon(state.geometry.coordinates, {
 //         weight: 2,
@@ -98,15 +129,13 @@ $.getJSON('data/mn_counties_500.geojson', function(data){
 // });
 
 
-
-
 // Rare species found in each county. Formatted as a collection (array of objects)
 var all_counties = {
     Aitkin: ['Panax quinquefolius', 
-                'Littorella americana', 
-                'Botrychium oneidense', 
-                'Poa paludigena', 
-                'Juglans cinerea'],
+            'Littorella americana', 
+            'Botrychium oneidense', 
+            'Poa paludigena', 
+            'Juglans cinerea'],
     Anoka: ['aaa'],
     Ramsey: ['Aaaa', 'BBbBb']
 };
@@ -134,14 +163,14 @@ $('#get-rares-button').on('click', function (e) {
     // First, unhiding the result columns on button click
     $('.result-cols').show();
 
-    var selected_county = $('.county-selection-dropdown').val();
-    var sp_list_title = $('<h5 class="rare-title"></h5>').text(selected_county + ' County rare species:');
+    var selectedCounty = $('.county-selection-dropdown').val();
+    var sp_list_title = $('<h5 class="rare-title"></h5>').text(selectedCounty + ' County rare species:');
 
     $('#county-species').prepend(sp_list_title); // Adding the title
     $('#county-species').append('<ul id="rare-list"></ul>'); // Adding the <ul> element the rare species list will be housed in
 
     // Adding each species in its own list element
-    var county_species = all_counties[selected_county];
+    var county_species = all_counties[selectedCounty];
     for (var i = 0; i < county_species.length; i++) {
         var sp_to_append = county_species[i];
         var sp_common_name = sci_name_lookup[sp_to_append];
@@ -159,17 +188,15 @@ $('#get-from-map-button').on('click', function (e) {
     };
 
     $('.result-cols').show();
-    var selected_county = '';
+    var selectedCounty = '';
 
     // appendRareData function is used to ensure that none of this executes until the geolocation getCurrentPosition callback
-    function appendRareData(selected_county, all_counties, sci_name_lookup) {
-        var sp_list_title = $('<h5 class="rare-title"></h5>').text(selected_county + ' County rare species:');
+    function appendRareData(selectedCounty, all_counties, sci_name_lookup) {
+        var sp_list_title = $('<h5 class="rare-title"></h5>').text(selectedCounty + ' County rare species:');
         $('#county-species').prepend(sp_list_title);
         $('#county-species').append('<ul id="rare-list"></ul>');
 
-        var county_species = all_counties[selected_county];
-        console.log(selected_county);
-        console.log(all_counties[selected_county]);
+        var county_species = all_counties[selectedCounty];
         for (var i = 0; i < county_species.length; i++) {
             var sp_to_append = county_species[i];
             var sp_common_name = sci_name_lookup[sp_to_append];
@@ -182,17 +209,25 @@ $('#get-from-map-button').on('click', function (e) {
         // Using leaflet-pip to get the county at the position
         var countyResult = leafletPip.pointInLayer([userLng, userLat], countiesLayer);
         var countyGeoloc = countyResult[0].feature.properties.CTY_NAME;
-        selected_county = countyGeoloc;
+        selectedCounty = countyGeoloc;
+
         // console.log('Found position');
-        appendRareData(selected_county, all_counties, sci_name_lookup);
+        appendRareData(selectedCounty, all_counties, sci_name_lookup);
     }
     function geo_error() {
-        selected_county = clickedCounty;
+        selectedCounty = clickedCounty;
         // console.log('Cant find position');
-        appendRareData(selected_county, all_counties, sci_name_lookup);
+        appendRareData(selectedCounty, all_counties, sci_name_lookup);
     }
     
-    navigator.geolocation.getCurrentPosition(geo_found, geo_error);
+    // Kind of janky workaround. If the marker object has been properly defined as L.marker (i.e. location is available, calls the geo_found function)
+    if (typeof locMarker == 'object') {
+        geo_found();
+    } else {
+        geo_error();
+    }
+    // Ideally would do this instead of the if else above, but is not quick enough of a result output
+    // navigator.geolocation.getCurrentPosition(geo_found, geo_error);
     
 });
 
