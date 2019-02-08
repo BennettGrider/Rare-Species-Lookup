@@ -1,4 +1,16 @@
 
+// Since main.js is included in all (1) html files, will register the service worker here
+// Making sure service workers are supported, then registering it
+// Use this cmd to develop on localhost: start chrome --unsafely-treat-insecure-origin-as-secure=http://127.0.0.1:5500/
+if('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('../sw_cached_site.js')
+            .then(reg => console.log('Service worker registered'))
+            .catch(err => console.log(`Service worker: error: ${err}`)) // Example of using a template string
+    })
+}
+
 
 
 // Select2 as a jQuery function, call on any jQuery selector when initializing Select2
