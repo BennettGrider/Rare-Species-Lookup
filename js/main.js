@@ -12,7 +12,6 @@ if('serviceWorker' in navigator) {
 }
 
 
-
 // Select2 as a jQuery function, call on any jQuery selector when initializing Select2
 $(document).ready(function() {
     $('.county-selection-dropdown').select2({
@@ -68,7 +67,7 @@ function onLocationFound(e) {
         locCircle = L.circle(e.latlng, radius).addTo(map);
         map.setView(e.latlng, 10); // Centers the map on the location, but only initially
         markerPresent = true;
-        var accuracyRounded = e.accuracy.toFixed(2);
+        var accuracyRounded = Math.round(e.accuracy * 100) / 100; // The multiplication and division is to properly get two decimal places
         $('#get-from-map-col').append(`<p id="loc-accuracy">Location accuracy: ${accuracyRounded} m</p>`);
     } else {
         locMarker.setLatLng(e.latlng);
