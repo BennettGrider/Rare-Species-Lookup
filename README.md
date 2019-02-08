@@ -8,9 +8,8 @@ This app is mainly for me to practice using Bootstrap and brush up on Leaflet, a
 TODO:
 *****
 
--Round location accuracy number in result
 -Add pictures and descriptions for each species
--Add more PWA features (option to add to home screen as app via web app install banner)
+-Add more PWA features (add to home screen on desktop, button in nav bar to add to home screen, more features?)
 -Add headers for County / Adjacent County columns
 -Adjust adjacent county columns to still list vertically on wide screen resolutions
 -Improve general styling of rare species lists

@@ -68,7 +68,8 @@ function onLocationFound(e) {
         locCircle = L.circle(e.latlng, radius).addTo(map);
         map.setView(e.latlng, 10); // Centers the map on the location, but only initially
         markerPresent = true;
-        $('#get-from-map-col').append('<p id="loc-accuracy">Location accuracy: ' + e.accuracy.toFixed(2) + 'm</p>');
+        var accuracyRounded = e.accuracy.toFixed(2);
+        $('#get-from-map-col').append(`<p id="loc-accuracy">Location accuracy: ${accuracyRounded} m</p>`);
     } else {
         locMarker.setLatLng(e.latlng);
         locCircle.setLatLng(e.latlng);
