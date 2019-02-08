@@ -1,4 +1,4 @@
-const cacheName = 'v2';
+const cacheName = 'v3';
 
 
 // Call Install Event. This is where we handle caching assets
