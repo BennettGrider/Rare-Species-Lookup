@@ -137,7 +137,22 @@
 .result-cols {
     display: none; /* Hiding the results columns until the user presses the button */
     border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(253, 245, 237, 0.5);
+    padding: 3vh 2vw;
     padding-bottom: 5vh;
+}
+
+/* Specific styling for result-cols, making border rounding work properly */
+#county-species {
+    border-radius: 20px 0px 0px 20px;
+}
+#adjacent-county-species {
+    border-radius: 0px 20px 20px 0px;
+}
+
+/* Column headers ("Selected County:, Adjacent Counties:" */
+.results-col-title {
+    text-align: center;
 }
 
 .rare-title {
@@ -161,15 +176,16 @@
 
 
 .county-button {
-    text-decoration: none;
-    color: #ff5500;
-    font-weight: 500;
+    text-decoration: none !important;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.3em;
 }
 
-.county-button:hover {
+.county-button:hover, .county-button:visited, .county-button:link, .county-button:active {
     text-decoration: none;
-    color: #c12600;
-    font-weight: 600;
+    color: #771700;
+    font-weight: 700;
 }
 
 .species-entry {

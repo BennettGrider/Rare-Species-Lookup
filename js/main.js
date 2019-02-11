@@ -647,7 +647,7 @@ var adjacent_col_id = '#adjacent-county-species';
 function appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup) {
     // Made the title for each county into a button, so that each one can be collapsed
     var uniqueDivId = selectedCounty.split(' ').join('-').split('.').join('').toLowerCase() + '-species-list';
-    var sp_list_title = $('<button class="btn btn-link county-button" data-toggle="collapse" data-target="#' + uniqueDivId + '" aria-expanded="false" aria-controls="' + uniqueDivId + '">' + selectedCounty + ' County rare species:</button>');
+    var sp_list_title = $(`<button class="btn btn-link county-button" data-toggle="collapse" data-flip="false" data-target="#${uniqueDivId}" aria-expanded="false" aria-controls="${uniqueDivId}">${selectedCounty} County Rare Species <img src="images/caret-down.svg" width=10 /></button>`);
     $(selected_col_id).append(sp_list_title);
     $(selected_col_id).append('<div id="' + uniqueDivId + '" class="collapse show county-species-div" data-parent="' + selected_col_id + '"></div>'); // Housing the collapsable species info for each county
     $('.county-species-div').collapse(); // Making the county <div> groups start collapsed
@@ -688,6 +688,7 @@ $('#get-rares-button').on('click', function (e) {
 
     // If elements have already been generated, removes them all
     if ($('.county-button').length) {
+        $('.county-button').empty();
         $('.county-button').remove();
         $('.county-species-div').empty(); // Use .empty() to also remove all child <li> elements
     };
@@ -709,6 +710,7 @@ $('#get-from-map-button').on('click', function (e) {
 
     // If elements have already been generated, removes them all
     if ($('.county-button').length) {
+        $('.county-button').empty();
         $('.county-button').remove();
         $('.county-species-div').empty(); // Use .empty() to also remove all child <li> elements
     };
