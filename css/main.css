@@ -58,11 +58,20 @@
 }
 
 
+/* Padded space between navbar and rest of content */
+.extra-space {
+    padding-bottom: 5vh;
+}
 
-/* The main div housing the county selection stuff */
+
+
+/* The main div housing the dropdown county selection stuff */
 #county-select {
     padding: 5vh 0vw;
-    /* border: 1px solid rgba(0,0,0,0.5); */ /* Just for visualizing Bootstrap grid stuff */
+    border: 2px solid rgba(194, 137, 71, 0.3);
+    background-color: rgba(253, 245, 237, 0.5);
+    border-radius: 10px;
+
 }
 
 /* Option to change the relative starting position of the dropdown box. Used to make the search bar appear over the dropdown directly */
@@ -75,7 +84,6 @@
     /* height: 2.4rem; */ /* For changing the height of the box itself */
 }
 
-
 .select2-container .select2-selection--single .select2-selection__rendered {
     padding-left: 10px;
 }
@@ -83,18 +91,28 @@
 
 /* Styling the "Or" divider */
 #or-separator {
-    /* border: 1px solid rgba(0,0,0,0.2); */
+    padding: 4vh;
+}
+#or-text {
+    /* border: 1px solid #000000; */
+    margin: 0 auto;
+    padding-bottom: 3px;
 }
 
 .separator-image {
     max-height: 12px;
     max-width: 100px;
+    /* border: 1px solid #000000; */
 }
+
 
 
 /* "Get from Location" button and leaflet map */
 #leaflet-map {
-    padding: 3vh;
+    padding: 5vh 0vw;
+    border: 2px solid rgba(194, 137, 71, 0.3);
+    background-color: rgba(253, 245, 237, 0.5);
+    border-radius: 8px;
 }
 
 #get-from-map-div {
@@ -102,7 +120,10 @@
 }
 
 #mapid {
+    width: 90%;
     height: 60vh;
+    margin: 0 auto;
+    border-radius: 8px;
 }
 
 #loc-accuracy {
@@ -131,12 +152,13 @@
 /* Styling the rare species results containers */
 
 #rare-species {
+    padding-top: 5vh;
     padding-bottom: 15vh;
 }
 
 .result-cols {
     display: none; /* Hiding the results columns until the user presses the button */
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(194, 137, 71, 0.3);
     background-color: rgba(253, 245, 237, 0.5);
     padding: 3vh 2vw;
     padding-bottom: 5vh;
@@ -144,15 +166,16 @@
 
 /* Specific styling for result-cols, making border rounding work properly */
 #county-species {
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 8px 0px 0px 8px;
 }
 #adjacent-county-species {
-    border-radius: 0px 20px 20px 0px;
+    border-radius: 0px 8px 8px 0px;
 }
 
 /* Column headers ("Selected County:, Adjacent Counties:" */
 .results-col-title {
     text-align: center;
+    font-weight: 700;
 }
 
 .rare-title {
@@ -179,7 +202,8 @@
     text-decoration: none !important;
     color: #000000;
     font-weight: 600;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    width: 100%;
 }
 
 .county-button:hover, .county-button:visited, .county-button:link, .county-button:active {
@@ -223,8 +247,8 @@
         font-size: 1em;
     }
     .separator-image {
-        max-height: 20px;
-        max-width: 160px;
+        max-height: 10px;
+        max-width: 120px;
     }
 }
 

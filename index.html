@@ -74,6 +74,9 @@
     
     <!-- Actual main content - fairly simple, just a dropdown of counties, and the results -->
     
+    <!-- This div is only here to give a bit of padding between the navbar and the rest of the content -->
+    <div class="row extra-space"></div>
+
     <div id="county-select" class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -178,7 +181,7 @@
                 </select>
                 </span>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <a href="#rare-species" id="get-rares-button" class="btn btn-primary">Get Rare Species</a>
             </div>
         </div>
@@ -190,7 +193,7 @@
             <img class="separator-image" src="images/web-separator-blue.png" alt=""> <!-- TEMP IMAGES! Replace with cool line later -->
         </div>
         <div class="row justify-content-center">
-            <h4 id="or-text">OR</h2>
+            <h4 id="or-text">OR</h4>
         </div>
         <div class="row justify-content-center">
             <img class="separator-image" src="images/web-separator-blue.png" alt=""> <!-- TEMP IMAGES! Replace with cool line later -->
@@ -214,11 +217,11 @@
     <div id="rare-species" class="container">
         <div class="row">
             <div id="county-species" class="col result-cols">
-                <h3 class="results-col-title">Selected County:</h3>
+                <h5 class="results-col-title">Selected County Rare Species:</h5>
                 <!-- This is where the JS adds all rare species listed for the county -->
             </div>
             <div id="adjacent-county-species" class="col result-cols">
-                <h3 class="results-col-title">Adjacent Counties:</h3>
+                <h5 class="results-col-title">Adjacent Counties Rare Species:</h5>
             </div>
         </div>
     </div>
