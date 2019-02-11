@@ -55,6 +55,7 @@ function onLocationFound(e) {
     userLat = e.latlng.lat;
     userLng = e.latlng.lng;
     var radius = e.accuracy / 2;
+    var accuracyRounded = Math.round(e.accuracy * 100) / 100; // The multiplication and division is to properly get two decimal places
 
     // First, if the 'location cannot be found' message exists, removes it
     if (locErrorMsg == true) {
@@ -67,12 +68,11 @@ function onLocationFound(e) {
         locCircle = L.circle(e.latlng, radius).addTo(map);
         map.setView(e.latlng, 10); // Centers the map on the location, but only initially
         markerPresent = true;
-        var accuracyRounded = Math.round(e.accuracy * 100) / 100; // The multiplication and division is to properly get two decimal places
         $('#get-from-map-col').append(`<p id="loc-accuracy">Location accuracy: ${accuracyRounded} m</p>`);
     } else {
         locMarker.setLatLng(e.latlng);
         locCircle.setLatLng(e.latlng);
-        $('#loc-accuracy').html('Location accuracy: ' + e.accuracy + 'm');
+        $('#loc-accuracy').html(`Location accuracy: ${accuracyRounded} m`);
     }
 }
 map.on('locationfound', onLocationFound);
@@ -547,6 +547,10 @@ var sci_name_lookup = {
     "Montia chamissoi": "Montia"
 };
 
+var species_description = {
+
+};
+
 // Lookup for getting each adjacent county
 var adjacent_counties = {
     'Lake of the Woods': ['Roseau', 'Beltrami', 'Koochiching'],
@@ -647,7 +651,7 @@ var adjacent_col_id = '#adjacent-county-species';
 function appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup) {
     // Made the title for each county into a button, so that each one can be collapsed
     var uniqueDivId = selectedCounty.split(' ').join('-').split('.').join('').toLowerCase() + '-species-list';
-    var sp_list_title = $(`<button class="btn btn-link county-button" data-toggle="collapse" data-flip="false" data-target="#${uniqueDivId}" aria-expanded="false" aria-controls="${uniqueDivId}">${selectedCounty} County Rare Species <img src="images/caret-down.svg" width=10 /></button>`);
+    var sp_list_title = $(`<button class="btn btn-link county-button" data-toggle="collapse" data-flip="false" data-target="#${uniqueDivId}" aria-expanded="false" aria-controls="${uniqueDivId}">${selectedCounty} County <img src="images/caret-down.svg" width=10 /></button>`);
     $(selected_col_id).append(sp_list_title);
     $(selected_col_id).append('<div id="' + uniqueDivId + '" class="collapse show county-species-div" data-parent="' + selected_col_id + '"></div>'); // Housing the collapsable species info for each county
     $('.county-species-div').collapse(); // Making the county <div> groups start collapsed
