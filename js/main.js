@@ -791,6 +791,7 @@ if ('onpagehide' in window) {
 }
 
 window.addEventListener('pageshow', pageLoadFunction, false);
+// window.addEventListener('load', pageLoadFunction, false);
 
 
 
