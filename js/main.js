@@ -547,9 +547,9 @@ var sci_name_lookup = {
     "Montia chamissoi": "Montia"
 };
 
-var species_description = {
-
-};
+// var species_description = {
+    
+// };
 
 // Lookup for getting each adjacent county
 var adjacent_counties = {
@@ -661,13 +661,20 @@ function appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_
     for (var i = 0; i < county_species.length; i++) {
         var sp_to_append = county_species[i];
         var sp_common_name = sci_name_lookup[sp_to_append];
+
+        // Handling the popup that displays the species description and images
         var species_image = 'images/species/' + sp_to_append + '.jpg';
-        var species_image_popup = '<a tabindex="0" class="species-popup" data-toggle="popover" data-trigger="focus" title="' + sp_to_append + '" data-content="<img src=\'' + species_image + '\' class=\'species-image\' width=\'200\' />">' + sp_to_append + '</a>';
+        var species_image_popup = '<a tabindex="0" id="#" class="species-popup" data-toggle="popover" title="' + sp_to_append + '" data-content="<img src=\'' + species_image + '\' class=\'species-image\' width=\'200\' />">' + sp_to_append + '</a>';
         $('.species-popup').popover({
             html: true
         });
+        // The species results themselves
         $('#' + uniqueDivId).append('<p class="species-entry"><em>' + species_image_popup + '</em> (' + sp_common_name + ')' + '</p>');
-        // $('#county-species').append('<p class="species-entry"><em>' + sp_to_append + '</em> (' + sp_common_name + ')' + '</p>');
+
+        // Attempting to create a carousel of images
+        // var carousel_div = sp_to_append + '-carousel-div';
+        // $().append(); // Main div
+        // $('')
     };
 };
 
@@ -749,6 +756,41 @@ $('#get-from-map-button').on('click', function (e) {
     
 });
 
+
+
+
+
+
+
+// Testing out data persisting on localstorage. This is done because iOS resets the page when you leave the window
+
+
+
+function exitFunction(e) {
+    console.log('Leaving page!'); // Testing that the function excutes on leaving the page
+    var selectedCounty2 = $('.county-selection-dropdown').val(); // Should allow the variable to be defined outside of the prior function
+    window.localStorage.setItem('selectedCounty', selectedCounty2);
+    console.log(window.localStorage.getItem('selectedCounty'));
+}
+
+function pageLoadFunction(e) {
+    var selectedCounty = window.localStorage.getItem('selectedCounty');
+    if (selectedCounty != '') {
+        $('.result-cols').show();
+        console.log(selected_col_id, selectedCounty);
+        appendRareData(selected_col_id, selectedCounty, all_counties, sci_name_lookup);
+    }
+}
+
+
+// TESTING OUT LOCALSTORAGE SAVE ON IOS
+if ('onpagehide' in window) {
+    window.addEventListener('pagehide', exitFunction, false);
+} else {
+    window.addEventListener('unload', exitFunction, false);
+}
+
+window.addEventListener('load', pageLoadFunction, false);
 
 
 
